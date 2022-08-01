@@ -1,0 +1,25 @@
+<tryton>
+  <data>
+    <record model="ir.action.act_window" id="act_holiday_calendar">
+      <field name="name">Calendar Holidays</field>
+      <field name="res_model">holiday.calendar</field>
+    </record>
+    <record model="ir.ui.view" id="holiday_calendar_view_tree">
+      <field name="model">holiday.calendar</field>
+      <field name="type">tree</field>
+      <field name="name">holiday_calendar_tree</field>
+    </record>
+    <record model="ir.ui.view" id="holiday_calendar_view_form">
+      <field name="model">holiday.calendar</field>
+      <field name="type">form</field>
+      <field name="name">holiday_calendar_form</field>
+    </record>
+    
+    <record model="ir.ui.view" id="holiday_holiday_view_tree">
+      <field name="model">holiday.holiday</field>
+      <field name="type">tree</field>
+      <field name="name">holiday_holiday_tree</field>
+    </record>
+
+  </data>
+</tryton>
