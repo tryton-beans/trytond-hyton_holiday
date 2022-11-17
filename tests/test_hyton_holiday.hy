@@ -23,14 +23,6 @@
           (.assertTrue self
                        (.holiday? calendar date20200101))
           (.assertFalse self
-                       (.holiday? calendar date20200102)))
-        
-        )) 
-  )
+                        (.holiday? calendar date20200102))))))
 
-(defn suite []
-  (setv suite (.suite trytond.tests.test_tryton))
-  (.addTests suite
-             (.loadTestsFromTestCase
-               (.TestLoader unittest) HytonHolidayTestCase))
-  suite)
+
