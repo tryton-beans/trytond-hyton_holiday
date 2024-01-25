@@ -1,5 +1,5 @@
 (import
-  trytond.model [ModelSQL ModelView fields Unique]
+  trytond.model [Index ModelSQL ModelView fields Unique]
   trytond.pool [Pool])
 
 
@@ -8,11 +8,18 @@
   (setv __name__ "holiday.holiday"
         name (.Char fields "Name")
         date (.Date fields "Date"
-                    :select True
                     :required True)
         calendar (.Many2One fields "holiday.calendar" "Holiday Calendar"
-                            :select True
-                            :required True)))
+                            :required True))
+
+
+  (defn [classmethod] __setup__ [cls]
+    (.__setup__ (super))
+    (setv t (.__table__ cls))
+    (.add cls._sql-indexes
+          (Index t #(t.date (.Range Index)))
+          ))
+  )
 
 
 (defclass Calendar[ModelSQL ModelView]
