@@ -28,7 +28,7 @@
              #("name_uniq" (Unique t t.name)
                            "Name must be unique")))
 
-  (defn holiday? [self date]
+  (defn is-holiday [self date]
     (let [Holiday (.get (Pool) "holiday.holiday")
           holiday (.search Holiday [#("calendar" "=" self.id)
                              #("date" "=" date)]

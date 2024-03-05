@@ -19,9 +19,9 @@
           calendar (save (Calendar :name "test-calendar"))
           holiday20200101 (save (Holiday :calendar calendar :date date20200101))]
       (.assertTrue self
-                   (.holiday? calendar date20200101))
+                   (.is-holiday calendar date20200101))
       (.assertFalse self
-                    (.holiday? calendar date20200102)))
+                    (.is-holiday calendar date20200102)))
     
     ) 
   )
