@@ -21,11 +21,5 @@
       <field name="name">holiday_holiday_tree</field>
     </record>
 
-    <menuitem
-        parent="company.menu_company"
-        action="act_holiday_calendar"
-        sequence="100"
-        id="menu_holiday_calendar"/>
-
   </data>
 </tryton>

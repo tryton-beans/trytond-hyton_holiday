@@ -1,6 +1,5 @@
 <form>
   <label name="name"/>
   <field name="name"/>
-  <field name="companies" colspan="4"/>
   <field name="holidays" colspan="4"/>
 </form>
