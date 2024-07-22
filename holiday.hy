@@ -26,8 +26,6 @@
   "Holidays Calendar, group of holiday Days"
   (setv __name__ "holiday.calendar"
         name (.Char fields "Name" :required True)
-        companies (.Many2Many fields "holiday.calendar-company.company"
-                              "calendar" "company" "Companies")
         holidays (.One2Many fields "holiday.holiday" "calendar" "holiday"))
 
   (defn [classmethod] __setup__ [cls]
@@ -52,12 +50,3 @@
           (next-workday calendars next days)
           next)))
 
-
-(defclass CalendarCompany [ModelSQL]
-  "Calendar Company"
-  (setv __name__ "holiday.calendar-company.company"
-        calendar (.Many2One fields "holiday.calendar" "Calendar"
-                            :required True)
-        company (.Many2One fields "company.company" "Company"
-                           :required True))
-  )
