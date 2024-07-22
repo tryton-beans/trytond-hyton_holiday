@@ -6,4 +6,5 @@ def register():
     Pool.register(
         holiday.Calendar,
         holiday.Holiday,
+        holiday.CalendarCompany,
         module='hyton_holiday', type_='model')
