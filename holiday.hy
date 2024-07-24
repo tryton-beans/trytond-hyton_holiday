@@ -44,9 +44,16 @@
       (bool holiday)
       )))
 
-(defn next-workday [calendars date [days 1]]
+(defn calendars-next-workday [calendars date [days 1]]
   (let [next (plus-days-weekday date days)]
-        (if (some (fn [cal] (.is-holiday cal next)) calendars)
-          (next-workday calendars next days)
-          next)))
+    (if (and calendars (some (fn [cal] (.is-holiday cal next)) calendars))
+        (calendars-next-workday calendars next days)
+        next)))
+
+(defn calendars-to-workday [calendars date]
+  (if (and calendars (some (fn [cal] (.is-holiday cal next)) calendars))
+    (calendars-next-workday calendars date 1)
+    date))
+
+
 
