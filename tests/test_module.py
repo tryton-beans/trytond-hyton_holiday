@@ -1,3 +1,1 @@
-import hy
-from test_hyton_holiday import HytonHolidayTestCase
-
+from hyton_holiday import HytonHolidayTestCase
