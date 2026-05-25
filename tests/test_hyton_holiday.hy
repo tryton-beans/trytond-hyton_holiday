@@ -6,7 +6,7 @@
   decimal [Decimal]
   trytond.tests.test_tryton [ModuleTestCase with_transaction]
   trytond.modules.hyton.sugar [gets save]
-  trytond.modules.hyton_holiday.holiday [calendars-next-workday]
+  trytond.modules.hyton_holiday.holiday [calendars-next-workday calendars-to-workday]
   trytond.pool [Pool])
 
 (defclass HytonHolidayTestCase [ModuleTestCase]
@@ -45,5 +45,14 @@
                     (calendars-next-workday [calendar-empty
                                    calendar
                                    calendar-2] (datetime.date 2023 12 29))
-                    (datetime.date 2024 1 3)))))
+                    (datetime.date 2024 1 3))
 
+      (.assertEqual self
+                    (calendars-to-workday [calendar] date20240101)
+                    date20240102)
+      (.assertEqual self
+                    (calendars-to-workday [calendar] date20240102)
+                    date20240102)
+      (.assertEqual self
+                    (calendars-to-workday [] date20240101)
+                    date20240101))))

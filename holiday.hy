@@ -38,9 +38,10 @@
   (defn is-holiday [self date]
     ;;(some (fn [h] (.is-holiday h date)) self.holidays)
     (let [Holiday (.get (Pool) "holiday.holiday")
-          holiday (.search Holiday [#("calendar" "=" self.id)
-                             #("date" "=" date)]
-                          :limit 1)]
+          holiday (.search Holiday [
+                                    #("calendar" "=" self.id)
+                                    #("date" "=" date)]
+                           :limit 1)]
       (bool holiday)
       )))
 
@@ -51,9 +52,8 @@
         next)))
 
 (defn calendars-to-workday [calendars date]
-  (if (and calendars (some (fn [cal] (.is-holiday cal next)) calendars))
+  (if (and calendars (some (fn [cal] (.is-holiday cal date)) calendars))
     (calendars-next-workday calendars date 1)
     date))
-
 
 
